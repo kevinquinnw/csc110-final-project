@@ -1,5 +1,6 @@
 import csv
 from typing import Dict, List, Tuple
+
 import pandas as pd
 
 STATES_CODE_TO_NAMES = {'AK': 'Alaska', 'AL': 'Alabama', 'AR': 'Arkansas', 'AZ': 'Arizona', 'CA': 'California',
@@ -119,11 +120,10 @@ def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
 
         # Skip the header of the dataset
         next(reader)
+
         for row in reader:
             if row[0] in STATES_CODE_TO_NAMES:
-                latitude = float(row[1])
-
-                longitude = float(row[2])
+                latitude, longitude = float(row[1]), float(row[2])
 
                 state = STATES_CODE_TO_NAMES[row[0]]
 
