@@ -39,19 +39,13 @@ def read_temp_csv_data(filepath_temp: str) -> Dict[str, Dict[int, List[float]]]:
             data_so_far[states[i]] = {}
 
         for row in reader_temp:
-            # for i in range(0, len(row)):
-            #     if i == 0:
-            #         year = int(row[i])
-            #     else:
-            #         value_precip = float(row[i])
-            #         data_so_far[states[i]].annual_precip_and_temp[year] = value_precip
-
             year = int(row[0])
             for i in range(1, len(row)):
                 value_temp = float(row[i])
                 data_so_far[states[i]][year] = [value_temp, 0, 0]
 
     return data_so_far
+
 
 def read_precip_csv_data(data: Dict[str, Dict[int, List[float]]], filepath_precip: str) -> None:
     states_names = list(data)
@@ -110,12 +104,14 @@ def read_csv_fire_2000_2018(data: Dict[str, Dict[int, List[float]]], filepath_fi
 
 
 def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
-    """Create and return a StateData instance for each state, excluding Hawaii, District of Columbia,
+    """
+    Create and return a StateData instance for each state, excluding Hawaii, District of Columbia,
     and Puerto Rico (There's not data for Hawaii. District of Columbia and Puerto Rico are not U.S. states).
 
     Return a mapping from the state's postal code to the state's full name,
-    so it can be used in the function reading the wildfire datasets."""
-    # Accumulator: storing the state to its instance of StateDate
+    so it can be used in the function reading the wildfire datasets.
+    """
+    # ACCUMULATOR: storing the state to its instance of StateDate
     states_location = {}
 
     with open(filepath) as file:
