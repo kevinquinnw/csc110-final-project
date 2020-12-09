@@ -1,12 +1,13 @@
-""" Everything needed to predict the future counts"""
+"""
+This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
 from typing import Dict, List
 
 
 def data_adder(data: Dict, state: str, future: int) -> None:
-    """ Predict future values
-    """
+    """Add the predicted values to the new dictionary."""
     # First, we need to create future values for all of our regression variables.
 
     for year in range(2020, future+1):
@@ -14,7 +15,7 @@ def data_adder(data: Dict, state: str, future: int) -> None:
 
 
 def create_new_averages(data: Dict, state: str) -> List:
-    """Yeehaw"""
+    """Create new predictors under the assumption that the event rate is constant."""
     st = list(data[state].values())
 
     temp_lst = []
@@ -33,13 +34,13 @@ def create_new_averages(data: Dict, state: str) -> List:
 
 
 def reset(data: Dict, state: str, future: int) -> None:
-    """Reset the dictionary after plotting it"""
+    """Reset the dictionary after plotting it."""
     for year in range(2020, future + 1):
         data[state].pop(year)
 
 
-def graph_this_boring_thing(data: Dict, state: str, future: int) -> None:
-    """Create a graph"""
+def graph_constant_rate(data: Dict, state: str, future: int) -> None:
+    """Create a graph using a pandas dataframe."""
 
     # Use our helper function to predict data ahead
     data_adder(data, state, future)
