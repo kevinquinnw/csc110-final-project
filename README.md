@@ -1,3 +1,8 @@
 # CSC110 Final Project
 
-Predicting future wildfire counts with a Poisson Regression model
+Predicting future wildfire counts with a poisson regression model and a negative binomial regression model. 
+
+## Our Goal
+The overall objective for this project was to predict the wildfire count for any state in any given year using a Poisson Regression model and a negative binomial regression model. 
+
+The reason we created two models was because a Poisson distribution assumes that the mean and the variance within the distribution are the same while a negative binomial distribution adjusts the variance independently from the mean.  
