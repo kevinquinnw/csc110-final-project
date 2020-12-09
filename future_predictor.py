@@ -16,15 +16,15 @@ def data_adder(data: Dict, state: str, future: int) -> None:
 
 def create_new_averages(data: Dict, state: str) -> List:
     """Create new predictors under the assumption that the event rate is constant."""
-    st = list(data[state].values())
+    state_lst = list(data[state].values())
 
     temp_lst = []
     precip_lst = []
     count_lst = []
-    for i in range(len(st)):
-        temp_lst.append(st[i][0])
-        precip_lst.append(st[i][1])
-        count_lst.append(st[i][2])
+    for i in range(len(state_lst)):
+        temp_lst.append(state_lst[i][0])
+        precip_lst.append(state_lst[i][1])
+        count_lst.append(state_lst[i][2])
 
     new_temp = (round(sum(temp_lst) / len(temp_lst), 1))
     new_precip = (round(sum(precip_lst) / len(precip_lst), 1))
