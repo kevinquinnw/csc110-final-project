@@ -66,7 +66,7 @@ def negative_binomial_graph(data: Dict, state: str) -> None:
     predicted_counts = predictions_summary_frame['mean']
     actual_counts = y_test['Fire_Counts']
     fig = plt.figure()
-    fig.suptitle('Predicted versus actual wildfire counts in' + ' ' + state)
+    fig.suptitle(f'Predicted versus actual wildfire counts in {state}')
     predicted, = plt.plot(x_test.index, predicted_counts, 'go-', label='Predicted counts')
     actual, = plt.plot(x_test.index, actual_counts, 'ro-', label='Actual counts')
     plt.legend(handles=[predicted, actual])

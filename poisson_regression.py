@@ -55,7 +55,7 @@ def poisson_graph(data: Dict, state: str) -> None:
 
     fig = plt.figure()
 
-    fig.suptitle('Predicted versus actual wildfire counts in' + ' ' + state)
+    fig.suptitle(f'Predicted versus actual wildfire counts in {state}')
 
     predicted, = plt.plot(x_test.index, predicted_counts, 'go-', label='Predicted counts')
     actual, = plt.plot(x_test.index, actual_counts, 'ro-', label='Actual counts')
