@@ -52,10 +52,10 @@ def graph_constant_rate(data: Dict, state: str, future: int) -> None:
                                 columns=['Average_Temp', 'Precipitation', 'Fire_Counts'])
 
     # Add a year column
-    df["Year"] = df.index
+    df['Year'] = df.index
 
-    df.plot(x="Year", y="Fire_Counts", kind="line")
-    plt.title('A Poisson regression model for a constant event rate in' + ' ' + state)
+    df.plot(x='Year', y='Fire_Counts', kind='line')
+    plt.title(f'A Poisson regression model for a constant event rate in {state}')
     plt.show()
 
     reset(data, state, future)
