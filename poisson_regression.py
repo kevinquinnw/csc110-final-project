@@ -1,3 +1,7 @@
+"""
+This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
+"""
+
 import pandas as pd
 from patsy import dmatrices
 import numpy as np
