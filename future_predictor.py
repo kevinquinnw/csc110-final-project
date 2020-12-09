@@ -1,9 +1,11 @@
 """
 This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
 """
+
+from typing import Dict, List
+
 import pandas as pd
 import matplotlib.pyplot as plt
-from typing import Dict, List
 
 
 def data_adder(data: Dict, state: str, future: int) -> None:
