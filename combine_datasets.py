@@ -138,8 +138,8 @@ def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
 
 # if __name__ == '__main__':
 # Since our data isn't in a subfolder we do not need the extension
-#     data = read_temp_csv_data('Annual Temperature_new.csv')
-#     read_precip_csv_data(data, 'Annual Precip_new.csv')
+#     data = read_temp_csv_data('Annual Temperature.csv')
+#     read_precip_csv_data(data, 'Annual Precip.csv')
 #     read_csv_fire_2019(data, 'Historic_GeoMAC_Perimeters_2019.csv')
 #     read_csv_fire_2000_2018(data, 'Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 #
