@@ -10,4 +10,6 @@ The reason we created two models was because a Poisson distribution assumes that
 
 ## Copyright and License Information
 
-TODO
+### Source Code
+
+The source code is licensed under the MIT License.
