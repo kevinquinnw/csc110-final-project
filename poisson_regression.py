@@ -13,7 +13,7 @@ from typing import Dict
 from combine_datasets import *
 
 
-def poisson_graph(data: Dict, state: str) -> None:
+def poisson_graph(state: str) -> str:
     """A function to display a poisson regression model graphically"""
 
         # Preloading the data for easier use.
