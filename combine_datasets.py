@@ -5,118 +5,187 @@ This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, 
 import csv
 from typing import Dict, List, Tuple
 
-import pandas as pd
-
-STATES_CODE_TO_NAMES = {'AK': 'Alaska', 'AL': 'Alabama', 'AR': 'Arkansas', 'AZ': 'Arizona', 'CA': 'California',
-                        'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware', 'FL': 'Florida', 'GA': 'Georgia',
-                        'IA': 'Iowa', 'ID': 'Idaho', 'IL': 'Illinois', 'IN': 'Indiana', 'KS': 'Kansas',
-                        'KY': 'Kentucky', 'LA': 'Louisiana', 'MA': 'Massachusetts', 'MD': 'Maryland', 'ME': 'Maine',
-                        'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri', 'MS': 'Mississippi', 'MT': 'Montana',
-                        'NC': 'North Carolina', 'ND': 'North Dakota', 'NE': 'Nebraska', 'NH': 'New Hampshire',
-                        'NJ': 'New Jersey', 'NM': 'New Mexico', 'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
-                        'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania', 'RI': 'Rhode Island',
-                        'SC': 'South Carolina', 'SD': 'South Dakota', 'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah',
-                        'VA': 'Virginia', 'VT': 'Vermont', 'WA': 'Washington', 'WI': 'Wisconsin', 'WV': 'West Virginia',
-                        'WY': 'Wyoming'}
+# The mapping of all the state codes to its full name
+# (excluding the state of Hawaii and any U.S. territories)
+STATES_CODE_TO_NAMES = {'AK': 'Alaska', 'AL': 'Alabama', 'AR': 'Arkansas', 'AZ': 'Arizona',
+                        'CA': 'California', 'CO': 'Colorado', 'CT': 'Connecticut', 'DE': 'Delaware',
+                        'FL': 'Florida', 'GA': 'Georgia', 'IA': 'Iowa', 'ID': 'Idaho',
+                        'IL': 'Illinois', 'IN': 'Indiana', 'KS': 'Kansas', 'KY': 'Kentucky',
+                        'LA': 'Louisiana', 'MA': 'Massachusetts', 'MD': 'Maryland', 'ME': 'Maine',
+                        'MI': 'Michigan', 'MN': 'Minnesota', 'MO': 'Missouri', 'MS': 'Mississippi',
+                        'MT': 'Montana', 'NC': 'North Carolina', 'ND': 'North Dakota',
+                        'NE': 'Nebraska', 'NH': 'New Hampshire', 'NJ': 'New Jersey',
+                        'NM': 'New Mexico', 'NV': 'Nevada', 'NY': 'New York', 'OH': 'Ohio',
+                        'OK': 'Oklahoma', 'OR': 'Oregon', 'PA': 'Pennsylvania',
+                        'RI': 'Rhode Island', 'SC': 'South Carolina', 'SD': 'South Dakota',
+                        'TN': 'Tennessee', 'TX': 'Texas', 'UT': 'Utah', 'VA': 'Virginia',
+                        'VT': 'Vermont', 'WA': 'Washington', 'WI': 'Wisconsin',
+                        'WV': 'West Virginia', 'WY': 'Wyoming'}
 
 
 def read_temp_csv_data(filepath_temp: str) -> Dict[str, Dict[int, List[float]]]:
-    """Return a SIRD dictionary from the data mapped from a CSV file.
+    """Return a mapping from the state to a mapping of the year to yearly data in the format
+    [average temperature, precipitation, wildfire counts].
 
-    n represents the initial population number.
+    Currently, the values for precipitation are wildfires counts are dummy values.
 
     Preconditions:
         - filepath refers to a csv file in the format of
-          data/modeling/ontario_covid_cases_2020_10_17.csv
+          data/Annual_Temperature.csv
           (i.e., could be that file or a different file in the same format)
-        - n is the size of the population represented in the given csv file
     """
+    # The mapping from the state to its yearly data so far
     data_so_far = {}
 
     with open(filepath_temp) as file_temp:
         reader_temp = csv.reader(file_temp)
 
+        # Skip the first 3 lines of the data
         for _ in range(0, 3):
             next(reader_temp)
 
+        # Store the header containing the names of the states
         states = next(reader_temp)
+
+        # Iterate through the header, skipping the 1st index, to map states to an empty dictionary,
+        # which will map the year to the data about the average temp, precipitation, wildfire counts
         for i in range(1, len(states)):
             data_so_far[states[i]] = {}
 
+        # Iterate through the remaining rows of the dataset
         for row in reader_temp:
+
+            # The current year being processed
             year = int(row[0])
+
+            # Iterate through each index of the row
             for i in range(1, len(row)):
+                # The average temperature value of a state in the current year
                 value_temp = float(row[i])
-                data_so_far[states[i]][year] = [value_temp, 0, 0]
+
+                # Create a mapping from the year to that year's data
+                # in the format [average temp, precipitation, wildfires]
+                data_so_far[states[i]][year] = [value_temp, 0, 0]  # The 0s are dummy values
 
     return data_so_far
 
 
 def read_precip_csv_data(data: Dict[str, Dict[int, List[float]]], filepath_precip: str) -> None:
+    """Read the data file storing the states' yearly precipitation values.
+    Then, mutate the given dictionary of the state to its yearly data
+    by replacing the precipitation's dummy value with the value from the dataset.
+
+    Preconditions:
+        - filepath refers to a csv file in the format of
+          data/Annual_Precip.csv
+          (i.e., could be that file or a different file in the same format)
+    """
+    # Extracting the key names (which are the state names) from the given mapping
     states_names = list(data)
     with open(filepath_precip) as file_precip:
         reader_precip = csv.reader(file_precip)
 
+        # Skip the first 4 lines of the dataset
         for _ in range(0, 4):
             next(reader_precip)
 
+        # Iterate through the remaining rows of the dataset
         for row in reader_precip:
+            # The current year being processed
             year = int(row[0])
+
+            # Iterate through each index of the row
             for i in range(1, len(row)):
+                # The precipitation value of a state in the current year
                 value_precip = float(row[i])
-                state_data = data[states_names[i-1]]
+
+                # Extracting the state's data values from the given mapping
+                # Index in the list state_names is off by 1 comparing the its index in the dataset
+                state_data = data[states_names[i - 1]]
+
+                # Replace the wildfire count's dummy value with the actual value
                 state_data[year][1] = value_precip
 
 
 def read_csv_fire_2019(data: Dict[str, Dict[int, List[float]]], filepath_fires: str) -> None:
+    """Read the data file storing fire incidents in 2019.
+    Then, mutate the given dictionary of the state to its yearly data by replacing
+    the wildfire count's dummy value with the value from the dataset.
+
+    Preconditions:
+        - filepath refers to a csv file in the format of
+          data/Historic_GeoMAC_Perimeters_2019.csv
+          (i.e., could be that file or a different file in the same format)
+    """
     with open(filepath_fires) as file_fires:
         reader_fires = csv.reader(file_fires)
 
+        # Skip the header of the dataset
         next(reader_fires)
+
         for row in reader_fires:
+            # Extract the location that the fire was in
             state_code = row[16]
 
+            # Check if the location is the restricted list of states
             if state_code in STATES_CODE_TO_NAMES:
+                # Extract the year
                 year = int(row[7])
 
+                # Get the state's full name
                 state_name = STATES_CODE_TO_NAMES[state_code]
 
+                # Get this state's data from the given mapping
                 state_info_all = data[state_name]
 
+                # Get this state's data in the year that the fire happened
                 state_info_year = state_info_all[year]
 
+                # Add the current state's fire count by 1
                 state_info_year[2] += 1
 
 
 def read_csv_fire_2000_2018(data: Dict[str, Dict[int, List[float]]], filepath_fires: str) -> None:
+    """Read the data file storing fire incidents from 2000 to 2018.
+    Then, mutate the given dictionary of the state to its yearly data by replacing
+    the wildfire count's dummy value with the value from the dataset.
+
+    Preconditions:
+        - filepath refers to a csv file in the format of
+          data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv
+          (i.e., could be that file or a different file in the same format)
+    """
     with open(filepath_fires) as file_fires:
         reader_fires = csv.reader(file_fires)
 
+        # Skip the header of the dataset
         next(reader_fires)
+
         for row in reader_fires:
+            # Extract the location that the fire was in
             state_code = row[15]
 
+            # Check if the location is the restricted list of states
             if state_code in STATES_CODE_TO_NAMES:
+                # Extract the year
                 year = int(row[6])
 
+                # Get the state's full name
                 state_name = STATES_CODE_TO_NAMES[state_code]
 
+                # Get this state's data from the given mapping
                 state_info_all = data[state_name]
 
+                # Get this state's data in the year that the fire happened
                 state_info_year = state_info_all[year]
 
+                # Add the current state's fire count by 1
                 state_info_year[2] += 1
 
 
 def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
-    """
-    Create and return a StateData instance for each state, excluding Hawaii, District of Columbia,
-    and Puerto Rico (There's not data for Hawaii. District of Columbia and Puerto Rico are not U.S. states).
-
-    Return a mapping from the state's postal code to the state's full name,
-    so it can be used in the function reading the wildfire datasets.
-    """
-    # ACCUMULATOR: storing the state to its instance of StateDate
+    """Return a mapping from the state's name to its location as (latitude, longitude)."""
+    # Accumulator: storing the state to its instance of StateDate
     states_location = {}
 
     with open(filepath) as file:
@@ -126,23 +195,40 @@ def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
         next(reader)
 
         for row in reader:
-            if row[0] in STATES_CODE_TO_NAMES:
-                latitude, longitude = float(row[1]), float(row[2])
+            # Extract the location that the fire was in
+            state_code = row[0]
 
-                state = STATES_CODE_TO_NAMES[row[0]]
+            # Check if the location is the restricted list of states
+            if state_code in STATES_CODE_TO_NAMES:
+                # Get this state's full name
+                state = STATES_CODE_TO_NAMES[state_code]
+
+                # Get this state's latitude
+                latitude = float(row[1])
+
+                # Get this state's latitude
+                longitude = float(row[2])
 
                 states_location[state] = (latitude, longitude)
 
     return states_location
 
 
-# if __name__ == '__main__':
-# Since our data isn't in a subfolder we do not need the extension
-#     data = read_temp_csv_data('Annual Temperature.csv')
-#     read_precip_csv_data(data, 'Annual Precip.csv')
-#     read_csv_fire_2019(data, 'Historic_GeoMAC_Perimeters_2019.csv')
-#     read_csv_fire_2000_2018(data, 'Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
-#
-#     df = pd.DataFrame.from_dict(data['Alabama'], orient='index', columns=['Average Temp', 'Precipitation', 'Fire Counts'])
-#
-#     print(df)
+if __name__ == '__main__':
+    import python_ta
+
+    python_ta.check_all(config={
+        'allowed-io': ['read_temp_csv_data',
+                       'read_precip_csv_data',
+                       'read_csv_fire_2019',
+                       'read_csv_fire_2000_2018',
+                       'read_csv_data_long_lang'],
+        'extra-imports': ['python_ta.contracts', 'csv'],
+        'max-line-length': 100,
+        'disable': ['R1705', 'C0200']
+    })
+
+    import python_ta.contracts
+
+    python_ta.contracts.DEBUG_CONTRACTS = False
+    python_ta.contracts.check_all_contracts()
