@@ -63,3 +63,4 @@ The source code is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-T
 ### Datasets
 
 - Annual Precip.csv is based off data from https://www.ncdc.noaa.gov/cag/statewide/time-series/2/pcp/ann/11/2000-2019?base_prd=true&begbaseyear=1901&endbaseyear=2000
+- Annual Temperature.csv is based off data from https://www.ncdc.noaa.gov/cag/statewide/time-series/2/tavg/12/12/2000-2019?base_prd=true&begbaseyear=1901&endbaseyear=2000
