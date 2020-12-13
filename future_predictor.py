@@ -1,11 +1,11 @@
 """
 This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
 """
-
-from typing import Dict, List
-
 import pandas as pd
 import matplotlib.pyplot as plt
+
+from typing import Dict, List
+from combine_datasets import *
 
 
 def data_adder(data: Dict, state: str, future: int) -> None:
@@ -43,6 +43,12 @@ def reset(data: Dict, state: str, future: int) -> None:
 
 def graph_constant_rate(data: Dict, state: str, future: int) -> None:
     """Create a graph using a pandas dataframe."""
+    
+    # Preloading the data in
+    data = read_temp_csv_data('data/Annual Temperature_new.csv')
+    read_precip_csv_data(data, 'data/Annual Precip_new.csv')
+    read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
+    read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 
     # Use our helper function to predict data ahead
     data_adder(data, state, future)
@@ -59,3 +65,4 @@ def graph_constant_rate(data: Dict, state: str, future: int) -> None:
     plt.show()
 
     reset(data, state, future)
+    return 'A new tab has been opened with the regression you chose.'
