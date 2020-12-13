@@ -64,3 +64,5 @@ The source code is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-T
 
 - Annual Precip.csv is based off data from https://www.ncdc.noaa.gov/cag/statewide/time-series/2/pcp/ann/11/2000-2019?base_prd=true&begbaseyear=1901&endbaseyear=2000
 - Annual Temperature.csv is based off data from https://www.ncdc.noaa.gov/cag/statewide/time-series/2/tavg/12/12/2000-2019?base_prd=true&begbaseyear=1901&endbaseyear=2000
+- Historic_GeoMAC_Perimeters_Combined_2000-2018.csv is based off data from https://data-nifc.opendata.arcgis.com/datasets/historic-geomac-perimeters-combined-2000-2018/data
+- Historic_GeoMAC_Perimeters_2019.csv is based off data from https://data-nifc.opendata.arcgis.com/datasets/historic-geomac-perimeters-2019/data
