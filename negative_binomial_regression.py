@@ -13,7 +13,7 @@ import statsmodels.formula.api as smf
 from combine_datasets import *
 
 
-def negative_binomial_graph(data: Dict, state: str) -> None:
+def negative_binomial_graph(state: str) -> str:
     """A function to display a negative binomial regression model graphically"""
     
         # Preloading the data in
