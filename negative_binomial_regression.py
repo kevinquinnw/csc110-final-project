@@ -10,10 +10,17 @@ import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
+from combine_datasets import *
 
 
 def negative_binomial_graph(data: Dict, state: str) -> None:
     """A function to display a negative binomial regression model graphically"""
+    
+        # Preloading the data in
+    data = read_temp_csv_data('data/Annual Temperature_new.csv')
+    read_precip_csv_data(data, 'data/Annual Precip_new.csv')
+    read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
+    read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 
     pd.options.mode.chained_assignment = None
 
@@ -71,3 +78,5 @@ def negative_binomial_graph(data: Dict, state: str) -> None:
     actual, = plt.plot(x_test.index, actual_counts, 'ro-', label='Actual counts')
     plt.legend(handles=[predicted, actual])
     plt.show()
+    
+    return 'A new tab has been opened with the regression you chose.'
