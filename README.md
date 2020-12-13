@@ -10,6 +10,8 @@ The reason we created two models was because a Poisson distribution assumes that
 
 ## Requirements
 
+Python 3.8+
+
 ### Testing and Code Checking
 - hypothesis
 - pytest
@@ -21,7 +23,6 @@ The reason we created two models was because a Poisson distribution assumes that
 - Numpy
 - Statsmodels.api
 - Matplotlib.pyplot
-- Typing
 
 ## Poisson Regression - how to
 1. Run the poisson_regression.py file. 
