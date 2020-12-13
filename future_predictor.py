@@ -41,7 +41,7 @@ def reset(data: Dict, state: str, future: int) -> None:
         data[state].pop(year)
 
 
-def graph_constant_rate(state: str, future: int) -> None:
+def graph_constant_rate(state: str, future: int) -> str:
     """Create a graph using a pandas dataframe."""
     
     # Preloading the data in
