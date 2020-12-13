@@ -9,11 +9,19 @@ from patsy import dmatrices
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+from typing import Dict
+from combine_datasets import *
 
 
 def poisson_graph(data: Dict, state: str) -> None:
     """A function to display a poisson regression model graphically"""
 
+        # Preloading the data for easier use.
+    data = read_temp_csv_data('data/Annual Temperature_new.csv')
+    read_precip_csv_data(data, 'data/Annual Precip_new.csv')
+    read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
+    read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
+    
     # First, creating a pandas dataframe for our data
     df = pd.DataFrame.from_dict(data[state], orient='index', columns=['Average_Temp', 'Precipitation', 'Fire_Counts'])
 
@@ -61,3 +69,5 @@ def poisson_graph(data: Dict, state: str) -> None:
     actual, = plt.plot(x_test.index, actual_counts, 'ro-', label='Actual counts')
     plt.legend(handles=[predicted, actual])
     plt.show()
+    
+    return 'A new tab has been opened with the regression you chose.'
