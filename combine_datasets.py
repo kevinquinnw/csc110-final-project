@@ -34,7 +34,7 @@ def read_temp_csv_data(filepath_temp: str) -> Dict[str, Dict[int, List[float]]]:
           data/Annual_Temperature.csv
           (i.e., could be that file or a different file in the same format)
     """
-    # The mapping from the state to its yearly data so far
+    # ACCUMULATOR: The mapping from the state to its yearly data so far
     data_so_far = {}
 
     with open(filepath_temp) as file_temp:
