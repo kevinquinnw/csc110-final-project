@@ -13,14 +13,8 @@ import statsmodels.formula.api as smf
 from combine_datasets import *
 
 
-def negative_binomial_graph(state: str) -> str:
+def negative_binomial_graph(state: str, data: Dict[str, Dict[int, List[float]]]) -> str:
     """A function to display a negative binomial regression model graphically"""
-    
-    # Preloading the data in
-    data = read_temp_csv_data('data/Annual_Temperature.csv')
-    read_precip_csv_data(data, 'data/Annual_Precip.csv')
-    read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
-    read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 
     pd.options.mode.chained_assignment = None
 

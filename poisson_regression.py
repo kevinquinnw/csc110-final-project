@@ -12,14 +12,8 @@ import matplotlib.pyplot as plt
 from combine_datasets import *
 
 
-def poisson_graph(state: str) -> str:
+def poisson_graph(state: str, data: Dict[str, Dict[int, List[float]]]) -> str:
     """A function to display a poisson regression model graphically"""
-
-    # Preloading the data for easier use.
-    data = read_temp_csv_data('data/Annual_Temperature.csv')
-    read_precip_csv_data(data, 'data/Annual_Precip.csv')
-    read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
-    read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 
     # First, creating a pandas dataframe for our data
     df = pd.DataFrame.from_dict(data[state], orient='index', columns=['Average_Temp', 'Precipitation', 'Fire_Counts'])
