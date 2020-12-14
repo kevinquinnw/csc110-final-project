@@ -2,7 +2,6 @@
 from combine_datasets import *
 from poisson_regression import *
 from negative_binomial_regression import *
-from map_visual import map_values
 
 data = read_temp_csv_data('data/Annual_Temperature.csv')
 read_precip_csv_data(data, 'data/Annual_Precip.csv')
