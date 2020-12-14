@@ -68,4 +68,4 @@ def poisson_graph(state: str) -> str:
     plt.legend(handles=[predicted, actual])
     plt.show()
     
-    return 'A new tab has been opened with the regression you chose.'
+    return 'A new tab has been opened with a poisson regression.'
