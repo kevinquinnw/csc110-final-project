@@ -7,7 +7,7 @@ data = read_temp_csv_data('data/Annual Temperature_new.csv')
 read_precip_csv_data(data, 'data/Annual Precip_new.csv')
 read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
 read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
-
+read_csv_data_long_lang(data, 'data/US_states_long_lang.csv')
 
 def checker(state: str, model: str) -> bool:
     """Check to see whether the state and model are in our project"""
