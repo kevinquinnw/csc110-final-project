@@ -1,8 +1,13 @@
+"""
+This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
+"""
+
+from typing import Dict, List, Tuple
+
 from mpl_toolkits.basemap import Basemap
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
-from typing import Dict, List, Tuple
 
 
 def map_values(y: int, locations: Dict[str, Tuple[float]], data: Dict[str, Dict[int, List[float]]]) -> None:
@@ -10,7 +15,7 @@ def map_values(y: int, locations: Dict[str, Tuple[float]], data: Dict[str, Dict[
 
     map = Basemap(llcrnrlon=-119, llcrnrlat=22, urcrnrlon=-64, urcrnrlat=49,
                   projection='lcc', lat_1=32, lat_2=45, lon_0=-95)
-    map.readshapefile('st99_d00', name='states', drawbounds=True)
+    map.readshapefile('data/st99_d00', name='states', drawbounds=True)
     map.drawcoastlines()
     map.drawstates()
     map.drawcountries()
