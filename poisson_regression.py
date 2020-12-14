@@ -2,21 +2,19 @@
 This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
 """
 
-from typing import Dict
-
 import pandas as pd
 from patsy import dmatrices
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
-from typing import Dict
+
 from combine_datasets import *
 
 
 def poisson_graph(state: str) -> str:
     """A function to display a poisson regression model graphically"""
 
-        # Preloading the data for easier use.
+    # Preloading the data for easier use.
     data = read_temp_csv_data('data/Annual Temperature_new.csv')
     read_precip_csv_data(data, 'data/Annual Precip_new.csv')
     read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')

@@ -1,10 +1,10 @@
 """
 This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
 """
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from typing import Dict, List
 from combine_datasets import *
 
 

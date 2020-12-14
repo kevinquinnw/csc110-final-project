@@ -2,14 +2,13 @@
 This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, and Alexander Shchokin.
 """
 
-from typing import Dict
-
 import pandas as pd
 from patsy import dmatrices
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
+
 from combine_datasets import *
 
 
