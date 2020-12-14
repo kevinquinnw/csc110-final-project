@@ -203,11 +203,8 @@ def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
                 # Get this state's full name
                 state = STATES_CODE_TO_NAMES[state_code]
 
-                # Get this state's latitude
-                latitude = float(row[1])
-
-                # Get this state's latitude
-                longitude = float(row[2])
+                # Get this state's latitude and longitude
+                latitude, longitude = float(row[1]), float(row[2])
 
                 states_location[state] = (latitude, longitude)
 

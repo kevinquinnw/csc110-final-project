@@ -20,7 +20,7 @@ def poisson_graph(state: str) -> str:
     read_precip_csv_data(data, 'data/Annual Precip_new.csv')
     read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
     read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
-    
+
     # First, creating a pandas dataframe for our data
     df = pd.DataFrame.from_dict(data[state], orient='index', columns=['Average_Temp', 'Precipitation', 'Fire_Counts'])
 
