@@ -22,7 +22,7 @@ Python 3.8+
 - Patsy
 - Numpy
 - Statsmodels.api
-- Matplotlib.pyplot
+- matplotlib
 
 ## Poisson Regression - how to
 1. Run the poisson_regression.py file. 
