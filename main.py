@@ -25,6 +25,9 @@ def data_visual(state: str, model: str) -> str:
     else:
         return 'Please try again'
 
+def adder(state: str, model: str) -> str:
+    """Add the strings together"""
+    return state+model    
 
 while True:
     answer = input('Want to see more? Y/N')
