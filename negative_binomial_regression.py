@@ -15,7 +15,7 @@ from combine_datasets import *
 def negative_binomial_graph(state: str) -> str:
     """A function to display a negative binomial regression model graphically"""
     
-        # Preloading the data in
+    # Preloading the data in
     data = read_temp_csv_data('data/Annual Temperature_new.csv')
     read_precip_csv_data(data, 'data/Annual Precip_new.csv')
     read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
