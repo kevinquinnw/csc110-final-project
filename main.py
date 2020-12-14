@@ -14,6 +14,7 @@ def checker(state: str, model: str) -> bool:
     models = ['PR', 'NBR']
     return state in data.keys() and model in models
 
+
 def data_visual(state: str, model: str) -> str:
     """Outputting the desired functions"""
 
@@ -30,7 +31,7 @@ while True:
     if answer == 'Y':
         state = input('What state do you want to take a closer look at?')
         model = input('Poisson Regression or Negative Binomial Regression? Type in PR or NBR')
-        if checker(state, model) == True:
+        if checker(state, model):
             print(data_visual(state, model))
             continue
         else:
@@ -39,6 +40,3 @@ while True:
         break
     else:
         print('Enter either Y/N')
-
-
-
