@@ -33,8 +33,8 @@ def adder(state: str, model: str) -> str:
 
 
 while True:
-    answer = input('Want to see more? Y/N')
-    if answer == 'Y':
+    answer = input('Want to see more? y/n')
+    if answer == 'y':
         state = input('What state do you want to take a closer look at?')
         model = input('Poisson Regression or Negative Binomial Regression? Type in PR or NBR')
         if checker(state, model):
@@ -42,7 +42,7 @@ while True:
             continue
         else:
             print('Enter a valid state and model')
-    elif answer == 'N':
+    elif answer == 'n':
         break
     else:
-        print('Enter either Y or N')
+        print('Enter either y or n')
