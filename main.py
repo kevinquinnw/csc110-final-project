@@ -15,21 +15,21 @@ def checker(state: str) -> bool:
     return state in data.keys()
 
 
-# STATE_FOCUS_MESSAGE = 'What state do you want to take a closer look at? If you do not want to, type n.'
-#
-#
-# state = input(STATE_FOCUS_MESSAGE)
-# if checker(state):
-#     while checker(state):
-#         model = input('Poisson Regression or Negative Binomial Regression? Type in pr or nbr.')
-#         if model == 'pr':
-#             poisson_graph(state)
-#         elif model == 'nbr':
-#             negative_binomial_graph(state)
-#         else:
-#             print('Invalid model. Please try again.')
-#
-#         state = input(STATE_FOCUS_MESSAGE)
-#         continue
-# else:
-#     print('Thank You!')
+STATE_FOCUS_MESSAGE = 'What state do you want to take a closer look at? If you do not want to, type n.'
+
+
+state = input(STATE_FOCUS_MESSAGE)
+if checker(state):
+    while checker(state):
+        model = input('Poisson Regression or Negative Binomial Regression? Type in pr or nbr.')
+        if model == 'pr':
+            poisson_graph(state)
+        elif model == 'nbr':
+            negative_binomial_graph(state)
+        else:
+            print('Invalid model. Please try again.')
+
+        state = input(STATE_FOCUS_MESSAGE)
+        continue
+else:
+    print('Thank You!')
