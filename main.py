@@ -10,39 +10,23 @@ read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-201
 read_csv_data_long_lang(data, 'data/US_states_long_lang.csv')
 
 
-def checker(state: str, model: str) -> bool:
+def checker(state: str) -> bool:
     """Check to see whether the state and model are in our project"""
-    models = ['PR', 'NBR']
-    return state in data.keys() and model in models
+    return state in data.keys()
 
 
-def data_visual(state: str, model: str) -> str:
-    """Outputting the desired functions"""
-
-    if model == 'PR':
-        return poisson_graph(state)
-    elif model == 'NBR':
-        return negative_binomial_graph(state)
-    else:
-        return 'Please try again'
-
-
-def adder(state: str, model: str) -> str:
-    """Add the strings together"""
-    return state+model    
-
-
-while True:
-    answer = input('Want to see more? y/n')
-    if answer == 'y':
-        state = input('What state do you want to take a closer look at?')
+state = input('What state do you want to take a closer look at? If you do not want to type N')
+if checker(state):
+    while checker(state):
         model = input('Poisson Regression or Negative Binomial Regression? Type in PR or NBR')
-        if checker(state, model):
-            print(data_visual(state, model))
-            continue
+        if model == 'PR':
+            poisson_graph(state)
+        elif model == 'NBR':
+            negative_binomial_graph(state)
         else:
-            print('Enter a valid state and model')
-    elif answer == 'n':
-        break
-    else:
-        print('Enter either y or n')
+            print('Invalid model. Please try again.')
+
+        state = input('What state do you want to take a closer look at? If you do not want to type N')
+        continue
+else:
+    print('Thank You!')
