@@ -185,7 +185,7 @@ def read_csv_fire_2000_2018(data: Dict[str, Dict[int, List[float]]], filepath_fi
 
 def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
     """Return a mapping from the state's name to its location as (latitude, longitude)."""
-    # Accumulator: storing the state to its instance of StateDate
+    # ACCUMULATOR: storing the state to its instance of StateDate
     states_location = {}
 
     with open(filepath) as file:
