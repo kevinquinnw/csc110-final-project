@@ -183,34 +183,6 @@ def read_csv_fire_2000_2018(data: Dict[str, Dict[int, List[float]]], filepath_fi
                 state_info_year[2] += 1
 
 
-def read_csv_data_long_lang(filepath: str) -> Dict[str, Tuple[float, float]]:
-    """Return a mapping from the state's name to its location as (latitude, longitude)."""
-    # ACCUMULATOR: storing the state to its instance of StateDate
-    states_location = {}
-
-    with open(filepath) as file:
-        reader = csv.reader(file)
-
-        # Skip the header of the dataset
-        next(reader)
-
-        for row in reader:
-            # Extract the location that the fire was in
-            state_code = row[0]
-
-            # Check if the location is the restricted list of states
-            if state_code in STATES_CODE_TO_NAMES:
-                # Get this state's full name
-                state = STATES_CODE_TO_NAMES[state_code]
-
-                # Get this state's latitude and longitude
-                latitude, longitude = float(row[1]), float(row[2])
-
-                states_location[state] = (latitude, longitude)
-
-    return states_location
-
-
 if __name__ == '__main__':
     import python_ta
 
@@ -218,8 +190,7 @@ if __name__ == '__main__':
         'allowed-io': ['read_temp_csv_data',
                        'read_precip_csv_data',
                        'read_csv_fire_2019',
-                       'read_csv_fire_2000_2018',
-                       'read_csv_data_long_lang'],
+                       'read_csv_fire_2000_2018'],
         'extra-imports': ['python_ta.contracts', 'csv'],
         'max-line-length': 100,
         'disable': ['R1705', 'C0200']
