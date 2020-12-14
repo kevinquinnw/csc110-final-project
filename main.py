@@ -17,7 +17,7 @@ def checker(state: str) -> bool:
 
 STATE_FOCUS_MESSAGE = 'What state do you want to take a closer look at? If you do not want to, type n.'
 
-
+# ACCUMULATOR: The state selected so far.
 state = input(STATE_FOCUS_MESSAGE)
 if checker(state):
     while checker(state):
