@@ -18,18 +18,18 @@ def checker(state: str) -> bool:
 STATE_FOCUS_MESSAGE = 'What state do you want to take a closer look at? If you do not want to, type n.'
 
 # ACCUMULATOR: The state selected so far.
-state = input(STATE_FOCUS_MESSAGE)
-if checker(state):
-    while checker(state):
+state_so_far = input(STATE_FOCUS_MESSAGE)
+if checker(state_so_far):
+    while checker(state_so_far):
         model = input('Poisson Regression or Negative Binomial Regression? Type in pr or nbr.')
         if model == 'pr':
-            poisson_graph(state)
+            poisson_graph(state_so_far)
         elif model == 'nbr':
-            negative_binomial_graph(state)
+            negative_binomial_graph(state_so_far)
         else:
             print('Invalid model. Please try again.')
 
-        state = input(STATE_FOCUS_MESSAGE)
+        state_so_far = input(STATE_FOCUS_MESSAGE)
         continue
 else:
     print('Thank You!')
