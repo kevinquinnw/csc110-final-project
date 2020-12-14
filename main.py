@@ -15,13 +15,13 @@ def checker(state: str) -> bool:
     return state in data.keys()
 
 
-state = input('What state do you want to take a closer look at? If you do not want to type N')
+state = input('What state do you want to take a closer look at? If you do not want to, type N')
 if checker(state):
     while checker(state):
-        model = input('Poisson Regression or Negative Binomial Regression? Type in PR or NBR')
-        if model == 'PR':
+        model = input('Poisson Regression or Negative Binomial Regression? Type in pr or nbr')
+        if model == 'pr':
             poisson_graph(state)
-        elif model == 'NBR':
+        elif model == 'nbr':
             negative_binomial_graph(state)
         else:
             print('Invalid model. Please try again.')
