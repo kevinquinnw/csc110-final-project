@@ -66,7 +66,7 @@ The goal of this regression was to track the trend in the wildfire counts under 
 
 ### How do we analyze the data?
 
-The regression models chosen are used for count based data and we chose these in hopes of seeing trends that are explainable and easy to utilize. From our results it may give a good idea of an overall trend wildfire counts or what to expect in the future.
+The regression models chosen are used for count based data and we chose these in hopes of seeing trends that are explainable and easy to utilize. From our results it may give a good idea of an overall trend for how many wildfires to expect in the future.
 
 ## Copyright and License Information
 
