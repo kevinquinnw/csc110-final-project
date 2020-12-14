@@ -17,8 +17,8 @@ def negative_binomial_graph(state: str) -> str:
     """A function to display a negative binomial regression model graphically"""
     
     # Preloading the data in
-    data = read_temp_csv_data('data/Annual Temperature_new.csv')
-    read_precip_csv_data(data, 'data/Annual Precip_new.csv')
+    data = read_temp_csv_data('data/Annual_Temperature.csv')
+    read_precip_csv_data(data, 'data/Annual_Precip.csv')
     read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
     read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 
