@@ -3,7 +3,7 @@ This file is Copyright (c) 2020 Mohamed Al-Fahim, Kevin Quinn, An Nguyen-Trinh, 
 """
 
 import csv
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 # The mapping of all the state codes to its full name
 # (excluding the state of Hawaii and any U.S. territories)
