@@ -54,6 +54,20 @@ negative_binomial_graph('Alabama')
 
 In the above case it would output a graph for Alabama with actual counts vs. predicted counts but you can put any state in the U.S. except Hawaii, American Samoa, District of Columbia, Guam, Puerto Rico and the Virgin Islands.
 
+## Interpretation of PR and NBR
+
+### Poisson Regression
+
+The goal of this regression was to track the trend in the wildfire counts under the assumption that the average wild fire counts is equivalent to the variance of our data. Under this assumption, a graph was displayed graphing the predicted counts versus the actual counts. 
+
+### Negative Binomial Regression
+
+The goal of this regression was to track the trend in the wildfire counts under the assumption that the average wild fire counts is not equivalent to the variance of our data. Under this assumption, a graph was displayed graphing the predicted counts versus the actual counts. 
+
+### How do we analyze the data?
+
+The regression models chosen are used for count based data and we chose these in hopes of seeing trends that are explainable and easy to utilize. From our results it may give a good idea of an overall trend wildfire counts or what to expect in the future.
+
 ## Copyright and License Information
 
 ### Source Code
