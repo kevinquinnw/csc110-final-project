@@ -21,7 +21,7 @@ Python 3.8+
 - Pandas
 - Patsy
 - Numpy
-- Statsmodels.api
+- statsmodels
 - matplotlib
 
 ## Poisson Regression - how to
