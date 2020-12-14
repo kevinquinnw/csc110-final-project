@@ -78,4 +78,4 @@ def negative_binomial_graph(state: str) -> str:
     plt.legend(handles=[predicted, actual])
     plt.show()
     
-    return 'A new tab has been opened with the regression you chose.'
+    return 'A new tab has been opened with a negative binomial regression.'
