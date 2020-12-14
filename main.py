@@ -5,7 +5,7 @@ from negative_binomial_regression import *
 from map_visual import map_values
 
 data = read_temp_csv_data('data/Annual_Temperature.csv')
-read_precip_csv_data(data, 'data/Annual Precip_new.csv')
+read_precip_csv_data(data, 'data/Annual_Precip.csv')
 read_csv_fire_2019(data, 'data/Historic_GeoMAC_Perimeters_2019.csv')
 read_csv_fire_2000_2018(data, 'data/Historic_GeoMAC_Perimeters_Combined_2000-2018.csv')
 long_lang_data = read_csv_data_long_lang('data/US_states_long_lang.csv')
@@ -15,8 +15,6 @@ def checker(state: str) -> bool:
     """Check to see whether the state and model are in our project"""
     return state in data.keys()
 
-
-map_values(2019, long_lang_data, data)
 
 # STATE_FOCUS_MESSAGE = 'What state do you want to take a closer look at? If you do not want to, type n.'
 #

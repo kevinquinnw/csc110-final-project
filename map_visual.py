@@ -9,6 +9,8 @@ from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
 
+from combine_datasets import read_temp_csv_data, read_precip_csv_data, read_csv_fire_2000_2018, read_csv_data_long_lang
+
 
 def map_values(y: int, locations: Dict[str, Tuple[float]], data: Dict[str, Dict[int, List[float]]]) -> None:
     """Map state temperature and wildfire location in given year. """
