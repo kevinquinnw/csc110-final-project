@@ -1,4 +1,4 @@
-# CSC110 Final Project
+# Wildfire Predictor - CSC110 Project
 
 Predicting future wildfire counts with a poisson regression model and a negative binomial regression model. 
 
